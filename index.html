@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="google-site-verification" content="aIiuTLs4iiznZTMM51mRInTWsOjHw3RKrXQ_nsBFzz8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+        <title>Transforming Faces Across Time</title>
+    </head>
+
+    <body class="container" style="max-width:840px">
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+        <!-- heading -->
+        <div>
+            <!-- title -->
+            <div class='row mt-5 mb-3'>
+                <div class='col text-center'>
+                    <p class="h2 font-weight-normal">What's in a Decade?</p>
+					<p class="h2 font-weight-normal">Transforming Faces Across Time</p>
+                </div>
+            </div>
+
+            <!-- authors -->
+            <div class="row text-center h6 font-weight-bold mb-2 ">
+                <span class="col-md-2"></span>
+                <span><a class="col-md-4 col-xs-6 pb-2" href="https://echen01.github.io">Eric Chen</a></span>
+                <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.cs.cornell.edu/~hadarelor">Hadar Averbuch-Elor</a></span>
+                <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.cs.cornell.edu/~jinsun">Jin Sun</a></span>
+				<span><a class="col-md-4 col-xs-6 pb-2" href="https://apoorvkh.com">Apoorv Khandelwal</a></span>
+            </div>
+            <div class="row text-center h6 font-weight-bold mb-3 ">
+                <span class="col-md-4"></span>
+                <span><a class="col-md-4 col-xs-6 pb-2" href="https://www.cs.huji.ac.il/~danix">Dani Lischinski</a></span>
+                <span><a class="col-md-4 col-xs-6 pb-2" href="http://snavely.io">Noah Snavely</a></span>
+            </div>
+
+            <!-- affiliations -->
+            <!-- <div class='row mb-1'>
+                <div class='col text-center'>
+                    <p class="h6">
+                        <a href="https://www.cornell.edu"><span>Cornell University</span></a>
+                        <a href="https://tech.cornell.edu"><span>Cornell Tech</span></a>
+                        <a href="https://allenai.org"><span>Allen Institute for AI</span></a>
+                        <a href="https://en.huji.ac.il/en"><span>The Hebrew University of Jerusalem</span></a>
+                        <a href="https://ai.google"><span>Google AI</span></a>
+                    </p>
+                </div>
+            </div> -->
+
+            <!-- venue -->
+            <!-- <div class='row mb-2'>
+                <div class='col text-center'>
+                    <p class="h6">
+                        ECCV 2022
+                    </p>
+                </div>
+            </div> -->
+
+            <!-- links -->
+            <div class='row mb-4'>
+                <div class='col text-center'>
+                    <a href="https://arxiv.org/abs/" target="_blank" class="btn btn-outline-primary" role="button">
+                        <i class="ai ai-arxiv"></i>
+                        arXiv
+                    </a>
+                    <a href="https://github.com/echen01/SynthesizingAcrossTime" target="_blank" class="btn btn-outline-primary" role="button">
+                        <i class="fa fa-github"></i>
+                        Code
+                    </a>
+                    <a href="./dataset" target="_blank" class="btn btn-outline-primary" role="button">
+                        <i class="fa fa-database"></i>
+                        Dataset
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+		<!-- teaser -->
+		<div class='row justify-content-center'>
+
+			<div class="card">
+                <img src="assets/teaser.png" class="img-fluid rounded mx-auto d-block" >
+                <p style="margin: 10px; margin-top: -px; margin-bottom: 4px;">Pictured (from top left to bottom right): J.P. Morgan, Mindy Kaling, Emmeline Pankhurst, Sandra Oh, Charlie Chaplin, Brad Pitt.</p>
+            </div>
+
+			<div class='col-md-12 col-sm-12 col-xs-12 align-middle mt-1'>
+                <p class="text-break">
+                Given a portrait image such as these above captured in the 1910s (left) and the 2010s (right), our approach generates plausible renditions of how that portrait might have looked like, had it been taken in different decades spanning more than a century. Our framework captures characteristic styles across decades while maintaining the person’s identity.
+                
+                </p>
+			</div>
+
+            <a href="./dataset" target="_blank" class="btn btn-primary" role="button">
+                <i class="fa fa-database"></i> Additional examples from our method
+            </a>
+
+            <div class='col-md-12 col-sm-12 col-xs-12 align-middle mt-4'>
+                <p class='h6 font-weight-bold '>
+                In this work, we present a new task for <em>transforming faces across time</em> and a method for this task built upon StyleGAN2 (examples from our model are shown above). We also provide a large, diverse and high-quality dataset, <em>Faces Through Time</em>, that can serve this task, as well as a variety of other tasks in computer vision and graphics.
+                </p>
+			</div>
+		</div>
+
+
+        <!-- Paper section -->
+        <div>
+            <hr>
+            <div class="row">
+                <div class='col-md-3 col-sm-3 col-xs-12 text-center'>
+                    <div class="row mt-2">
+                        <a href="https://arxiv.org/pdf/2108.07253.pdf" style="max-width:200px; margin-left:auto; margin-right:auto"><!-- pdf link -->
+                            <img src="assets/paper-snapshot.png" alt="paper-snapshot" class="img-thumbnail" width="80%" style="box-shadow: 10px 10px 5px grey;">
+                        </a>
+                    </div>
+                </div>
+                <div class='col-md-9 col-sm-9 col-xs-12'>
+            		<p class='h4 font-weight-bold '>Abstract</p>
+             	<p style='line-height:1;'>
+                    How can one visually characterize a decade? In this work, we assemble the Faces Through Time dataset, which contains over a thousand portrait images from each decade, spanning the 1880s to the present day. Using our new dataset, we present a framework for resynthesizing portrait images across time, imagining how a portrait taken during a particular decade might have looked like, had it been taken in other decades. Our framework optimizes a family of per-decade generators that reveal subtle changes that differentiate decades—such as different hairstyles or makeup—while maintaining the identity of the input portrait. Experiments show that our method is more effective in resynthesizing portraits across time compared to state-of-the-art image-to-image translation methods, as well as attribute-based and language-guided portrait editing models. Our code and data are available at <a>www.github.com/anonymous</a>.
+                </p>
+                </div>
+            </div>
+        </div>
+
+		<div>
+            <hr>
+            <div class='row'>
+                <div class='col-md-12 col-sm-12 col-xs-12'>
+            		<p class='h4 font-weight-bold'>Acknowledgements</p>
+             	<p style='line-height:1;'>
+                This work was supported by...
+                </p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-12 col-sm-12 col-xs-12'>
+            		<p class='h4 font-weight-bold '>Citation</p>
+<pre><code>@InProceedings{chen2022:faces-across-time,
+    author    = {Eric Chen and Hadar Averbuch-Elor and Jin Sun and Apoorv Khandelwal and Dani Lischinski and Noah Snavely},
+    title     = {What's in a Decade? Transforming Faces Across Time},
+    booktitle = {arXiv},
+    year      = {2022}
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
