@@ -3,8 +3,8 @@ from glob import glob
 import random
 
 
-# output_file = 'examples.html'
-# N = 100
+output_file = 'examples.html'
+N = 100
 #
 # output_file = 'examples_full.html'
 # N = None
@@ -85,14 +85,14 @@ for original_file in originals[:N]:
                     <tr style="empty-cells: show;">
                         <td class="year-label">Input ({source_year})</td>
                         <td>&nbsp;&nbsp;</td>
-                        {''.join(f'<td class="year-label">{y}</td>' for y in range(1880, 2000, 10))}
+                        {''.join(f'<td class="year-label">{y}</td>' for y in range(1880, 2020, 10))}
                     </tr>
                     <tr>
                         <td><img src="{original_folder}/{original_file}.{image_ext}"></td>
                         <td></td>
                         {''.join(
                             f'<td><img src="{results_folder}/{original_file}_target_{target_year}.{image_ext}"' + (' class="selected"' if source_year == target_year else '') + "}></td>"
-                            for target_year in range(1880, 2000, 10)
+                            for target_year in range(1880, 2020, 10)
                         )}
                     </tr>
                 </table>
