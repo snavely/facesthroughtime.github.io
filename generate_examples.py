@@ -1,6 +1,7 @@
 import os
 from glob import glob
 import random
+import itertools
 
 
 output_file = 'examples.html'
@@ -16,6 +17,8 @@ N = 100
 
 original_folder = 'assets/originals'
 results_folder = 'assets/results'
+methods = ['ours', 'stargan2', 'sam', 'styleclip']
+method_names = ['Ours', 'StarGAN v2', 'SAM', 'StyleCLIP']
 image_ext = 'jpg'
 
 ###
@@ -61,7 +64,7 @@ print("""
 """, file=html_out)
 print(f"""
         <p>Below, we visualize {N}{" random" if N < len(originals) else ""} examples of faces from our Faces Through Time validation set and their transformations to decades from 1880 to 1990 using our method. We highlight our method's inversions with red boxes.</p>
-        {f'<p>You may also view a larger visualization (of {len(originals)} examples from our validation set — <b>500 MB</b>) <a href="./examples_full.html">here</a>. Recommonded: open this link in incognito mode to prevent browser caching and slowness.</p>' if N < len(originals) else ""}
+        {f'<p>You may also view a larger visualization (of {len(originals)} examples from our validation set) <a href="./examples_full.html">here</a> — <b>clicking this link loads 2 GB !</b>. Recommonded: open this link in incognito mode to prevent browser caching and slowness.</p>' if N < len(originals) else ""}
 """, file=html_out)
 
 ## Filters
@@ -72,6 +75,18 @@ print(f"""
             <option value="source-all">All</option>
             {''.join(f'<option value="source-{y}">{y}</option>' for y in range(1880, 2020, 10))}
         </select>
+""", file=html_out)
+
+print(f"""
+        &emsp;&emsp;
+        Filter by method:
+        <select id="methods_filter">
+            {''.join(f'<option value="method-{m}">{mn}</option>' for m, mn in zip(methods, method_names))}
+        </select>
+
+""", file=html_out)
+
+print(f"""
         <hr>
 """, file=html_out)
 
@@ -87,14 +102,16 @@ for original_file in originals[:N]:
                         <td>&nbsp;&nbsp;</td>
                         {''.join(f'<td class="year-label">{y}</td>' for y in range(1880, 2020, 10))}
                     </tr>
-                    <tr>
-                        <td><img src="{original_folder}/{original_file}.{image_ext}"></td>
-                        <td></td>
-                        {''.join(
-                            f'<td><img src="{results_folder}/{original_file}_target_{target_year}.{image_ext}"' + (' class="selected"' if source_year == target_year else '') + "}></td>"
-                            for target_year in range(1880, 2020, 10)
-                        )}
-                    </tr>
+                    {''.join(
+                        f'<tr class="method-all method-{method}"' + (' style="display: none;"' if method != methods[0] else '') + '>'
+                        + f'<td><img src="{original_folder}/{original_file}.{image_ext}"></td><td></td>'
+                        + ''.join(
+                            f'<td><img src="{results_folder}/{method}/{original_file}_target_{target_year}.{image_ext}"'
+                            + (' class="selected"' if source_year == target_year else '')
+                            + "></td>"
+                        for target_year in range(1880, 2020, 10) )
+                        + '</tr>'
+                    for method in methods )}
                 </table>
                 <hr>
             </div>
@@ -112,6 +129,12 @@ print("""
                     $(".source-all").css("display", "none");
                     $("." + years_filter.value).css("display", "block");
                 }
+            })
+
+            const methods_filter = document.getElementById('methods_filter');
+            $("#methods_filter").change(function() {
+                $(".method-all").css("display", "none");
+                $("." + methods_filter.value).css("display", "");
             })
         </script>
     </body>
