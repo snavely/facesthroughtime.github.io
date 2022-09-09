@@ -64,7 +64,7 @@ print("""
 """, file=html_out)
 print(f"""
         <p>Below, we visualize {N}{" random" if N < len(originals) else ""} examples of faces from our Faces Through Time validation set and their transformations to decades from 1880 to 1990 using our method. We highlight our method's inversions with red boxes.</p>
-        {f'<p>You may also view a larger visualization (of {len(originals)} examples from our validation set) <a href="./examples_full.html">here</a> — <b>clicking this link loads 2 GB !</b>. Recommonded: open this link in incognito mode to prevent browser caching and slowness.</p>' if N < len(originals) else ""}
+        {f'<p>You may also view a larger visualization (of {len(originals)} examples from our validation set) <a href="./examples_full.html">here</a> — <b>clicking this link loads 2 GB of data!</b> Recommonded: open this link in incognito mode to prevent browser caching and slowness.</p>' if N < len(originals) else ""}
 """, file=html_out)
 
 ## Filters
